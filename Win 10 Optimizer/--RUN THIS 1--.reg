@@ -1,0 +1,133 @@
+– – – – – – – – – – BEGIN REG FILE – – – – – – – – – –
+
+Windows Registry Editor Version 5.00
+; by TweakHound, https://www.tweakhound.com/, version 1.0 10AUG2015
+; This Win10 tweaks file is for DESKTOPS ONLY.
+; Read through this before using.
+; BACKUP BEFORE USING. You’ve been warned!
+
+; – – – – Power & Performance – – – –
+; Disable Hibernate
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
+“HibernateEnabled”=dword:00000000
+
+; Turn off Fast Startup
+;[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+;“HiberbootEnabled”=dword:00000000
+
+; – – – – Misc – – – –
+
+; Windows Update disable P2P
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config]
+“DODownloadMode”=dword:00000000
+
+; Disable Cortana
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+“AllowCortana”=dword:00000000
+
+; – – – – Desktop – – – –
+
+; Make desktop menus snappier
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+“MenuShowDelay”=”200”
+
+; – – – – Taskbar – – – –
+
+; Taskbar, Show all icons in taskbar
+;[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer]
+;“EnableAutoTray”=dword:00000000
+;[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+;“NavPaneShowAllFolders”=dword:00000001
+; Taskbar, Hide Task View Button
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+“ShowTaskViewButton”=dword:00000000
+
+; Taskbar, Hide Search
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+“SearchboxTaskbarMode”=dword:00000000
+
+; – – – – EXPLORER – – – –
+
+; Explorer show all folders
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+“NavPaneShowAllFolders”=dword:00000001
+
+; Remove Is Shortcut text
+;[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
+;“link”=hex:00,00,00,00
+
+; Explorer Show file extensions
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+“HideFileExt”=dword:00000000
+
+; Explorer, Show hidden files
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+“Hidden”=dword:00000001
+
+; Explorer, Remove OneDrive icon
+[HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+“System.IsPinnedToNameSpaceTree”=dword:00000000
+
+[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+“System.IsPinnedToNameSpaceTree”=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+“DisableFileSyncNGSC”=dword:00000001
+
+; Explorer, open to This PC
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+“LaunchTo”=dword:00000001
+
+; – – – – – – – –
+
+; Explorer, Open Command Windows here
+[-HKEY_CLASSES_ROOT\Directory\shell\runas]
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@=”Open Command Window Here as Administrator”
+“HasLUAShield”=””
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@=”cmd.exe /s /k pushd \”%V\””
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+@=”Open Command Window Here as Administrator”
+“HasLUAShield”=””
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
+@=”cmd.exe /s /k pushd \”%V\””
+[-HKEY_CLASSES_ROOT\Drive\shell\runas]
+[HKEY_CLASSES_ROOT\Drive\shell\runas]
+@=”Open Command Window Here as Administrator”
+“HasLUAShield”=””
+[HKEY_CLASSES_ROOT\Drive\shell\runas\command]
+@=”cmd.exe /s /k pushd \”%V\””
+
+; – – – – – – – –
+; Explorer, Add Take Ownership to right-click options
+[HKEY_CLASSES_ROOT\*\shell\takeownership]
+@=”Take ownership”
+“HasLUAShield”=””
+“NoWorkingDirectory”=””
+[HKEY_CLASSES_ROOT\*\shell\takeownership\command]
+@=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
+“IsolatedCommand”=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
+[HKEY_CLASSES_ROOT\exefile\shell\takeownership]
+@=”Take ownership”
+“HasLUAShield”=””
+“NoWorkingDirectory”=””
+[HKEY_CLASSES_ROOT\exefile\shell\takeownership\command]
+@=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
+“IsolatedCommand”=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
+[HKEY_CLASSES_ROOT\Directory\shell\takeownership]
+@=”Take ownership”
+“HasLUAShield”=””
+“NoWorkingDirectory”=””
+[HKEY_CLASSES_ROOT\Directory\shell\takeownership\command]
+@=”cmd.exe /c takeown /f \”%1\” /r /d y && icacls \”%1\” /grant administrators:F /t”
+“IsolatedCommand”=”cmd.exe /c takeown /f \”%1\” /r /d y && icacls \”%1\” /grant administrators:F /t”
+[HKEY_CLASSES_ROOT\dllfile\shell\takeownership]
+@=”Take ownership”
+“HasLUAShield”=””
+“NoWorkingDirectory”=””
+[HKEY_CLASSES_ROOT\dllfile\shell\takeownership\command]
+@=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
+“IsolatedCommand”=”cmd.exe /c takeown /f \”%1\” && icacls \”%1\” /grant administrators:F”
